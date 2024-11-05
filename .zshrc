@@ -5,7 +5,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-eval
+# export PATH="~/miniforge3/bin:$PATH"  # commented out by conda initialize
 
 # Set the directory we want to store zinit and plugins
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
@@ -58,26 +58,28 @@ zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 alias ls='ls --color'
 
 # Shell integrations
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/harrisonchojnowski/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+__conda_setup="$('/home/harry/miniforge3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
 if [ $? -eq 0 ]; then
     eval "$__conda_setup"
 else
-    if [ -f "/Users/harrisonchojnowski/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/harrisonchojnowski/miniforge3/etc/profile.d/conda.sh"
+    if [ -f "/home/harry/miniforge3/etc/profile.d/conda.sh" ]; then
+        . "/home/harry/miniforge3/etc/profile.d/conda.sh"
     else
-        export PATH="/Users/harrisonchojnowski/miniforge3/bin:$PATH"
+        export PATH="/home/harry/miniforge3/bin:$PATH"
     fi
 fi
 unset __conda_setup
 
-if [ -f "/Users/harrisonchojnowski/miniforge3/etc/profile.d/mamba.sh" ]; then
-    . "/Users/harrisonchojnowski/miniforge3/etc/profile.d/mamba.sh"
+if [ -f "/home/harry/miniforge3/etc/profile.d/mamba.sh" ]; then
+    . "/home/harry/miniforge3/etc/profile.d/mamba.sh"
 fi
 # <<< conda initialize <<<
